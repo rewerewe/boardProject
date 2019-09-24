@@ -1,0 +1,115 @@
+@charset "UTF-8";
+
+/* Header */
+.h-style {
+	line-height: 1;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.board-header-logo {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.text-dark {
+    color: #343a40!important;
+}
+
+.text-style {
+	font-size: 14px;	
+}
+
+/* .flex-nowrap {
+    -ms-flex-wrap: nowrap!important;
+    flex-wrap: nowrap!important;
+}
+.justify-content-between {
+    -ms-flex-pack: justify!important;
+    justify-content: space-between!important;
+}
+.align-items-center {
+    -ms-flex-align: center!important;
+    align-items: center!important;
+}
+.text-center {
+	text-align: center!important;
+} */
+
+
+/* Nav */
+.nav-style {
+	position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+}
+
+/* Main */
+.table {
+  width: 80% !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  text-align: center !important;
+  color: #212529;
+}
+
+.table-style {
+	font-size: 12px !important;
+}
+
+.page-link {
+	color: #383838 !important;
+}
+
+.page-link:hover {
+	color: #FFFFFF !important;
+}
+
+/* Footer */
+.board-footer {
+	padding: 1.0rem 0;
+    color: #999;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: .05rem solid #e5e5e5;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.container-style {
+  min-height: 100%;
+}
+.main-style {
+  padding: 20px;
+  padding-bottom: 50px;
+}
+.footer-style {
+  height: 50px;
+  margin-top: -50px;
+}
+
+a {
+	color: #383838 !important;
+}
+
+a:hover {
+	color: #008000 !important;
+}
+
+/* View page CSS */
+.view-style {
+    margin-bottom: 4rem;
+}
+
+.view-title {
+    margin-bottom: .25rem;
+    font-size: 2.5rem;
+}
+
+.view-date {
+    margin-bottom: 1.25rem;
+    color: #999;
+} 
