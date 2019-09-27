@@ -47,26 +47,34 @@
 	<!-- Error Page -->
 	<error-page>
 		<error-code>400</error-code>
-		<location>webapp/resources/html/error.html</location>
+		<location>/resources/html/error.html</location>
 	</error-page>
 	<error-page>
 		<error-code>401</error-code>
-		<location>webapp/resources/html/error.html</location>
+		<location>/resources/html/error.html</location>
 	</error-page>
 	<error-page>
 		<error-code>403</error-code>
-		<location>webapp/resources/html/error.html</location>
+		<location>/resources/html/error.html</location>
 	</error-page>
 	<error-page>
 		<error-code>404</error-code>
-		<location>webapp/resources/html/error.html</location>
+		<location>/resources/html/error.html</location>
 	</error-page>
 	<error-page>
 		<error-code>500</error-code>
-		<location>webapp/resources/html/error.html</location>
+		<location>/resources/html/error.html</location>
 	</error-page>
 	<error-page>
 		<error-code>504</error-code>
-		<location>webapp/resources/html/error.html</location>
+		<location>/resources/html/error.html</location>
 	</error-page>
 </web-app>
+
+
+
+
+
+
+
+
