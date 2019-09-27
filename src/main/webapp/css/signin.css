@@ -1,0 +1,115 @@
+@charset "UTF-8";
+/* Sign-in */
+body {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 140px;
+    padding-bottom: 100px;
+    background-color: #ffffff;
+}
+
+
+.section_signin * {
+    font-family: 'Noto Sans';
+    color: #333;
+}
+
+.section_signin {
+    width: 340px;
+    margin: 0 auto;
+    padding-top: 90px;
+    letter-spacing: -0.6px;
+}
+
+.signin-style {
+	width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+.signin-title-style	{
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+	font-size: 3.5rem;
+  }
+}
+.section_signin input[type=number], .section_signin input[type=text], .section_signin input[type=password] {
+    width: 100%;
+    height: 54px;
+    padding: 0 19px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+    outline: none;
+}
+
+.section_signin [name=password], .section_signin [name=store], .section_signin [name=copyright] {
+    margin-top: 10px;
+}
+
+.section_signin input[type=number]:focus, .section_signin input[type=text]:focus, .section_signin input[type=password]:focus {
+    border: 1px solid #333;
+}
+
+.form-control:focus {
+    box-shadow: no !important;
+}
+
+.check-email-store {
+	float: right !important;
+	font-size: 13px !important;
+}
+.f-13 {
+	font-size: 13px !important;
+}
+
+.f-14 {
+	 font-size: 14px!important;
+}
+
+.f-15 {
+	 font-size: 15px!important;
+}
+
+.f-16 {
+	 font-size: 16px!important;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #008001;
+    border-color: #008001;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #008001;
+    border-color: #008001;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #008001;
+    border-color: #008001;
+}
