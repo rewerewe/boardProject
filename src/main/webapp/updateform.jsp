@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>view.jsp</title>
+<title>updateform.jsp</title>
 <link type="text/css" rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="<%=cp %>/css/board.css">
 </head>
@@ -43,23 +43,36 @@
 		    </nav>
 		</div>
 		<div role="main" class="main-style">
-			<div class="col-md-2"></div>
-			<div class="col-md-auto">
-				<div class="view-style">
-			        <h2 class="view-title">New feature</h2>
-			        <p class="view-date">December 14, 2013 by <a href="#">Chris</a></p>
 
-			        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-			        <ul>
-			          <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
-			          <li>Donec id elit non mi porta gravida at eget metus.</li>
-			          <li>Nulla vitae elit libero, a pharetra augue.</li>
-			        </ul>
-			        <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-			        <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-			      </div>
+			<div class="card mb-3 writeForm-style">
+				<div class="row no-gutters">
+					<div class="writeForm-body">
+						<form>
+							<div class="form-group">
+								<select class="form-control f-13 wi-20" id="formControlSelect1">
+									<option>공지</option>
+									<option>질문</option>
+									<option>정보</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<input class="form-control f-13 wi-30" id="formControlInput1" placeholder="작성자" readonly="readonly">
+							</div>
+							<div class="form-group">
+								<input class="form-control f-13 wi-100" id="formControlInput2" placeholder="제목을 입력해주세요." required autofocus>
+							</div>
+							<div class="form-group">
+								<textarea class="form-control f-13 wi-100" id="formControlTextarea1" rows="10" placeholder="내용을 입력해주세요."></textarea>
+							</div>
+							<p class="btn-align-center"> 
+								<a class="btn f-13 " href="#">취소</a>
+								<a class="btn btn-outline-secondary f-13" href="#">수정</a>
+							</p>
+						</form>
+					</div>
+				</div>	
 			</div>
-	 		<div class="col-md-2"></div>
+
 		</div>	
 	</div>
 

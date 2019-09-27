@@ -1,5 +1,18 @@
 @charset "UTF-8";
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, figure {
+    margin: 0;
+    padding: 0;
+}
 
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
 /* Header */
 .h-style {
 	line-height: 1;
@@ -24,18 +37,21 @@
     -ms-flex-wrap: nowrap!important;
     flex-wrap: nowrap!important;
 }
+
 .justify-content-between {
     -ms-flex-pack: justify!important;
     justify-content: space-between!important;
 }
+
 .align-items-center {
     -ms-flex-align: center!important;
     align-items: center!important;
 }
+
 .text-center {
 	text-align: center!important;
 } */
-
+	
 
 /* Nav */
 .nav-style {
@@ -66,13 +82,43 @@
 	color: #FFFFFF !important;
 }
 
+/* View */
+.position-absol {
+    position: absolute !important;
+    top: 150px !important; 
+    right: 130px !important;
+}
+
+.controlHit {
+	position: absolute;
+	top: 100px !important;
+    right: 140px !important;
+    font-size: 12px !important;
+}
+
+.controlBtn {
+	
+	text-align: end !important;
+    padding-right: 20px !important;
+	padding-block-start: 20px !important;
+    padding-block-end: 20px !important;
+    	
+}
+
+.edbtn {
+	margin: 0 2px !important;
+    text-decoration: none !important;
+    font-size: 12px !important;
+    color: #999 !important;
+}
+
 /* Footer */
 .board-footer {
 	padding: 1.0rem 0;
     color: #999;
     text-align: center;
-    background-color: #f9f9f9;
     border-top: .05rem solid #e5e5e5;
+    background-color: #f9f9f9;
 }
 
 html, body {
@@ -82,13 +128,16 @@ html, body {
 .container-style {
   min-height: 100%;
 }
+
 .main-style {
   padding: 20px;
   padding-bottom: 50px;
+  margin-bottom: 50px !important;
 }
+
 .footer-style {
-  height: 50px;
-  margin-top: -50px;
+	height: 90px;
+  	margin-top: -90px;
 }
 
 a {
@@ -102,6 +151,16 @@ a:hover {
 /* View page CSS */
 .view-style {
     margin-bottom: 4rem;
+    width: 80% !important;
+  	margin-right: auto !important;
+  	margin-left: auto !important;
+  	margin-bottom: 30px !important;
+}
+
+.view-group {
+	text-decoration: underline;
+    margin-bottom: 1.25rem;
+    color: #999;
 }
 
 .view-title {
@@ -112,4 +171,84 @@ a:hover {
 .view-date {
     margin-bottom: 1.25rem;
     color: #999;
-} 
+}
+
+.btn-outline-secondary:hover {
+	background-color: #e9ecef !important;
+}
+
+/* writeForm */
+.writeForm-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto !important;
+    padding: 30px !important;
+}
+.writeForm-style {
+	margin-bottom: 4rem;
+    width: 75% !important;
+  	margin-right: auto !important;
+  	margin-left: auto !important;
+  	border-top : 1px solid rgba(0, 0, 0, 0.125) !important;
+}
+
+
+.wi-10 {
+	width: 10% !important;
+}
+
+.wi-20 {
+	width: 20% !important;
+}
+
+.wi-30 {
+	width: 30% !important;
+}
+
+.wi-50 {
+	width: 50% !important;
+}
+
+.wi-80 {
+	width: 80% !important;
+}
+
+.wi-100 {
+	width: 100% !important;
+}
+
+.f-13 {
+	font-size: 13px !important;
+}
+
+.f-14 {
+	 font-size: 14px!important;
+}
+
+.f-15 {
+	 font-size: 15px!important;
+}
+
+.f-16 {
+	 font-size: 16px!important;
+}
+
+.btn-align-center {
+	text-align: center;
+}
+
+.btn-align-left {
+	text-align: left;
+}
+
+.btn-align-right {
+	text-align: right;
+}
+
+.btn-style {
+	width: 80% !important;
+  	margin-right: auto !important;
+  	margin-left: auto !important;
+  	text-align: right !important;
+  	color: #212529;
+}
+
