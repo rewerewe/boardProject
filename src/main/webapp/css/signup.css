@@ -6,7 +6,7 @@ body {
     -ms-flex-align: center;
     align-items: center;
     padding-top: 70px;
-    padding-bottom: 55px;
+    padding-bottom: 20px;
     background-color: #ffffff;
 }
 
@@ -51,7 +51,7 @@ body {
 }
 
 .table th, .table td {
-	padding: 10px;
+	padding: 7px;
     border-top: #ffffff;
 }
 
@@ -125,6 +125,10 @@ body {
     background: #fff;
     outline: none;
 }
+
+.section-signup .signupWrite input[type="text"]:focus, .section-signup .signupWrite input[type="password"]:focus {
+	border: 1px solid #333;
+	}
 
 .f-14 {
 	 font-size: 14px!important;
