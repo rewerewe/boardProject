@@ -15,17 +15,49 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
+	<!-- 컴포넌트 스캔 : 어노테이션 설정한 java 파일을 자동으로 인식하게 도와주는 구문 
+     ex) @Contoller, @Service, @Repository, @Bean, @Configuration 등 -->
+	<context:component-scan base-package="com.board.project" />
+	
 	<!-- @Controller 에서 .jsp 파일로 이동할 때, View 파일 위치, 확장자를 미리 설정 -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	
-	<!-- 컴포넌트 스캔 : 어노테이션 설정한 java 파일을 자동으로 인식하게 도와주는 구문 
-     ex) @Contoller, @Service, @Repository, @Bean, @Configuration 등 -->
-	<context:component-scan base-package="com.board.project" />
-	
+	<!-- MariaDB -->
+	<beans:bean id="datasource2" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName" value="org.mariadb.jdbc.Driver" />
+		<beans:property name="url" value="jdbc:mariadb://localhost:3306/BOARD" />
+		<beans:property name="username" value="imme" />
+		<beans:property name="password" value="180801" />
+	</beans:bean>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	
 	
 </beans:beans>
