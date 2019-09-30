@@ -1,5 +1,6 @@
 package com.board.project;
 
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 import com.common.AbstractDao;
@@ -10,6 +11,17 @@ import com.common.AbstractDao;
  */
 @Repository("BoardDao")
 public class BoardDao extends AbstractDao {
+	
+	public void data(String writer) {
+		
+		for (int i=1; i <= 201; i++) {
+			HashMap<String, String> param = new HashMap<String, String>();
+			param.put("TITLE", "제목" + i);
+			param.put("CONTENT", "내용" + i);
+			param.put("WRITER", writer);
+			sqlSession.insert("com.board.BoardDao.data", param);
+		}
+	}
 	
 	public List<Object> list() {
 		

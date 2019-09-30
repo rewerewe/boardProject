@@ -5,6 +5,13 @@
   
 <mapper namespace="com.board.BoardDao">
 	
+	<insert id="data">
+		INSERT INTO /* com.board.BoardDao.data */
+			BOARD (TITLE, CONTENT, WRITER)
+		VALUES 
+			(#{TITLE}, #{CONTENT}, #{WRITER});
+	</insert>
+	
 	<select id="list" resultType="map">
 		SELECT /* com.board.BoardDao.list */
 			SEQ
