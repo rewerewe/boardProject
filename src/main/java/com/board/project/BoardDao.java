@@ -10,6 +10,13 @@ import com.common.AbstractDao;
  */
 @Repository("BoardDao")
 public class BoardDao extends AbstractDao {
+	
+	public List<Object> list() {
+		
+		List<Object> list = sqlSession.selectList("com.board.BoardDao.list");
+		return list;
+	}
+	
 	public List<Object> sample() {
 		
 		List<Object> sampleList = sqlSession.selectList("com.board.BoardDao.sample");

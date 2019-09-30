@@ -4,7 +4,18 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.board.BoardDao">
-
+	
+	<select id="list" resultType="map">
+		SELECT /* com.board.BoardDao.list */
+			SEQ
+			, TITLE
+			, WRITER
+			, DATE_FORMAT(CREATED, '%y-%m-%d %H:%i') AS CREATED
+			, HIT
+		FROM 
+			BOARD
+	</select>
+	
 	<select id="sample" resultType="map">
 		SELECT /* com.board.BoardDao.sample */
 		       *

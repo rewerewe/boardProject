@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class BoardController {
 
-	/* @Resource(name="BoardService") */
+	/* Resource(name="BoardService")에서 Autowired 로 수정  */
 	@Autowired 
 	private BoardService service;
 	
@@ -22,6 +22,24 @@ public class BoardController {
 	 * RequestMapping : 클라이언트 요청을 매칭하는 어노테이션. 
 	 * 요청에 따라 어떤 Controller, Method가 처리할 것인지 결정하여 매핑하는 역할 
 	 */
+	@RequestMapping("list.do")
+	public ModelAndView list() {
+		
+		ModelAndView mv = new ModelAndView();
+		List<Object> list = service.list();
+		
+		mv.addObject("list", list);
+		mv.setViewName("list");
+		
+		return mv;
+	}
+	
+	
+	
+	
+	/**
+	 * testContoller
+	 * */
 	@RequestMapping("test.do") 
 	public ModelAndView sampleList() {
 		
