@@ -51,28 +51,20 @@
 							<th scope="col">글번호</th>
 							<th scope="col" colspan="2">제목</th>
 							<th scope="col">작성자</th>
+							<th scope="col">작성일</th>
 							<th scope="col">조회수</th>
 						</tr>
 					</thead>
 					<tbody>
+<c:forEach var="item" items="${list}" varStatus="vs">			
 						<tr>
-							<th scope="row">1</th>
-							<td colspan="2">현재 프로젝트 상황</td>
-							<td>정임혜</td>
-							<td>10</td>					
+							<th scope="row" id="SEQ${item.SEQ}">${item.SEQ}</th>
+							<td colspan="2" id="TITLE${item.TITLE}">${item.TITLE}</td>
+							<td id="WRITER${item.WRITER}">${item.WRITER}</td>
+							<td id="CREATED${item.CREATED}">${item.CREATED}</td>
+							<td id="HIT${item.HIT}">${item.HIT}</td>					
 						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td colspan="2">파이널 프로젝트 마무리</td>
-							<td>임혜</td>
-							<td>9</td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td colspan="2">개인 프로젝트 진행중</td>
-							<td>imme</td>
-							<td>8</td>
-						</tr>
+</c:forEach>						
 					</tbody>
 				</table>
 
@@ -94,6 +86,9 @@
 						</li>
 					</ul>
 				</nav>
+				<div>
+					${list }
+				</div>
 			</div>
 	 		<div class="col-md-2"></div>
 		</div>	
