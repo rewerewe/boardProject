@@ -1,4 +1,4 @@
-package com.board.project;
+package com.common;
 
 import java.text.DateFormat;
 import java.util.Date;
