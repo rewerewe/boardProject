@@ -12,6 +12,18 @@ import com.common.AbstractDao;
 @Repository("BoardDao")
 public class BoardDao extends AbstractDao {
 	
+	public List<Object> pagingList(HashMap<String, Object> param) {
+		
+		List<Object> pagingList = sqlSession.selectList("com.board.BoardDao.pagingList", param);
+		return pagingList;
+	}
+	
+	public int totalCount() {
+			
+		int totalCount = sqlSession.selectOne("com.board.BoardDao.totalCount");
+		return totalCount;
+	}
+	
 	public void data(String writer) {
 		
 		for (int i=1; i <= 201; i++) {

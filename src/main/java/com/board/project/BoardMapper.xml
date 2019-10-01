@@ -5,6 +5,41 @@
   
 <mapper namespace="com.board.BoardDao">
 	
+	<select id="totalCount" resultType="int">
+		SELECT /* com.board.BoardDao.totalCount */
+			COUNT(*) AS TOTCOUNT
+		  FROM 
+			BOARD    
+		 WHERE 
+			1=1 
+	</select>
+	
+	<select id="pagingList" resultType="map">
+		SELECT	/* com.board.BoardDao.pagingList */
+			   * 
+		  FROM 
+			   (
+				SELECT ROW_NUMBER() OVER(ORDER BY SEQ DESC) AS RNUM, A.*
+				  FROM 
+					   (
+						SELECT  SEQ
+								, TITLE
+								, CONTENT
+								, DATE_FORMAT(CREATED, '%y-%m-%d %H:%i') AS CREATED
+								, WRITER
+								, HIT
+						FROM BOARD
+						WHERE 1=1
+					   ) A
+				 WHERE 
+					1=1
+			    ) B
+		 WHERE 
+			 1=1 
+		   AND
+			 RNUM BETWEEN #{listNumStart} AND #{listNumEnd}
+	</select>
+	
 	<insert id="data">
 		INSERT INTO /* com.board.BoardDao.data */
 			BOARD (TITLE, CONTENT, WRITER)
@@ -21,6 +56,9 @@
 			, HIT
 		FROM 
 			BOARD
+		WHERE 
+			1=1
+			ORDER BY SEQ DESC
 	</select>
 	
 	<select id="sample" resultType="map">
@@ -31,5 +69,3 @@
 	</select>
 
 </mapper>
-
-

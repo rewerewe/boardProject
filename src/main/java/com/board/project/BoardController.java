@@ -1,7 +1,6 @@
 package com.board.project;
 
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +22,19 @@ public class BoardController {
 	 * RequestMapping : 클라이언트 요청을 매칭하는 어노테이션. 
 	 * 요청에 따라 어떤 Controller, Method가 처리할 것인지 결정하여 매핑하는 역할 
 	 */
+	@RequestMapping("pagingList.do")
+	public ModelAndView list(HttpServletRequest request) {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		List<Object> paginglist = service.pagingList(request);
+		
+		mv.addObject("paginglist", paginglist);
+		mv.setViewName("list");
+		
+		return mv;
+	}
+	
 	@RequestMapping("data.do")
 	public String inputData(HttpServletRequest request) {
 		
@@ -30,22 +42,19 @@ public class BoardController {
 		
 		return "redirect:list.do";
 	}
-
+	
 	@RequestMapping("list.do")
 	public ModelAndView list() {
-		
+
 		ModelAndView mv = new ModelAndView();
 		List<Object> list = service.list();
-		
+
 		mv.addObject("list", list);
 		mv.setViewName("list");
-		
+
 		return mv;
 	}
 	
-	/**
-	 * testContoller
-	 * */
 	@RequestMapping("test.do") 
 	public ModelAndView sampleList() {
 		

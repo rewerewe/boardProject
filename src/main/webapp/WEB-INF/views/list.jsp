@@ -12,6 +12,17 @@
 <title>list.jsp</title>
 <link type="text/css" rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="<%=cp %>/css/board.css">
+
+<script type="text/javascript">
+
+function getPaging(nowPage) {
+	
+	var param = "";
+	param += "?nowPage=" + nowPage;
+	
+	location.href = "pagingList.do" + param;
+}
+</script>
 </head>
 <body>
 	<div class="container container-style">
@@ -48,47 +59,42 @@
 				<table class="table mb-3 table-style">
 					<thead class="thead-light">
 						<tr>
-							<th scope="col">글번호</th>
-							<th scope="col" colspan="2">제목</th>
-							<th scope="col">작성자</th>
-							<th scope="col">작성일</th>
-							<th scope="col">조회수</th>
+							<th scope="col" class="w-150p">글번호</th>
+							<th scope="col" colspan="2" class="w-300p">제목</th>
+							<th scope="col" class="w-150p">작성일</th>
+							<th scope="col" class="w-100p">작성자</th>
+							<th scope="col" class="w-100p">조회수</th>
 						</tr>
 					</thead>
 					<tbody>
-<c:forEach var="item" items="${list}" varStatus="vs">			
+<c:forEach var="item" items="${paginglist}" varStatus="vs">			
+	<c:if test="${totalCount > 0 }">					
 						<tr>
-							<th scope="row" id="SEQ${item.SEQ}">${item.SEQ}</th>
-							<td colspan="2" id="TITLE${item.TITLE}">${item.TITLE}</td>
-							<td id="WRITER${item.WRITER}">${item.WRITER}</td>
-							<td id="CREATED${item.CREATED}">${item.CREATED}</td>
-							<td id="HIT${item.HIT}">${item.HIT}</td>					
+							<th scope="row">${item.SEQ}</th>
+							<td colspan="2">${item.TITLE}</td>
+							<td>${item.CREATED}</td>
+							<td>${item.WRITER}</td>
+							<td>${item.HIT}</td>					
 						</tr>
-</c:forEach>						
+	</c:if>	
+</c:forEach>
+					
+<c:if test="${totalCount <= 0 }">
+						<tr>
+							<td colspan="5">데이터가 없습니다. </td>
+						</tr>
+</c:if>			
 					</tbody>
 				</table>
 
 				<!-- 페이징 처리 -->
 				<nav aria-label="Page navigation ">
-					<ul class="pagination justify-content-center mb-5">
-						<li class="page-item">
-							<a class="page-link" href="#" aria-label="Previous">
-							  <span aria-hidden="true">&laquo;</span>
-							</a>
-						</li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item">
-							<a class="page-link" href="#" aria-label="Next">
-							  <span aria-hidden="true">&raquo;</span>
-							</a>
-						</li>
-					</ul>
+					<ul class="pagination justify-content-center mb-5">${pagingHTML}</ul>
 				</nav>
-				<div>
-					${list }
-				</div>
+				
+				<p class="btn-style"> 
+					<a class="btn btn-outline-secondary f-13" href="#">글쓰기</a>
+				</p>
 			</div>
 	 		<div class="col-md-2"></div>
 		</div>	

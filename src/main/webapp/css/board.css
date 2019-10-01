@@ -148,6 +148,27 @@ a:hover {
 	color: #008000 !important;
 }
 
+.font-bold {
+	font-weight : bold;
+}
+
+.btn-align-left {
+	text-align: left;
+}
+
+.btn-align-right {
+	text-align: right;
+}
+
+.btn-style {
+	width: 80% !important;
+  	margin-right: auto !important;
+  	margin-left: auto !important;
+  	text-align: right !important;
+  	color: #212529;
+}
+
+
 /* View page CSS */
 .view-style {
     margin-bottom: 4rem;
@@ -250,4 +271,16 @@ a:hover {
   	margin-left: auto !important;
   	text-align: right !important;
   	color: #212529;
+}
+
+.w-100p {
+	width: 100px;
+}
+
+.w-150p {
+	width: 150px;
+}
+
+.w-300p {
+	width: 300px;
 }
