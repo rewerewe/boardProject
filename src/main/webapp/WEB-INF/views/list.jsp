@@ -15,13 +15,21 @@
 
 <script type="text/javascript">
 
-function getPaging(nowPage) {
+	function getPaging(nowPage) {
+		
+		var param = "";
+		param += "?nowPage=" + nowPage;
+		
+		location.href = "pagingList.do" + param;
+	}
 	
-	var param = "";
-	param += "?nowPage=" + nowPage;
-	
-	location.href = "pagingList.do" + param;
-}
+	function getSEQ(seq) {
+		
+		var param = "";
+		param += "?seq=" + seq;
+		
+		location.href = "view.do" + param;
+	}
 </script>
 </head>
 <body>
@@ -70,8 +78,8 @@ function getPaging(nowPage) {
 <c:forEach var="item" items="${paginglist}" varStatus="vs">			
 	<c:if test="${totalCount > 0 }">					
 						<tr>
-							<th scope="row">${item.SEQ}</th>
-							<td colspan="2">${item.TITLE}</td>
+							<th scope="row" id="SEQ${item.SEQ}">${item.SEQ}</th>
+							<td colspan="2"><a href="#" onclick="getSEQ('${item.SEQ}')">${item.TITLE}</a></td>
 							<td>${item.CREATED}</td>
 							<td>${item.WRITER}</td>
 							<td>${item.HIT}</td>					
@@ -87,11 +95,12 @@ function getPaging(nowPage) {
 					</tbody>
 				</table>
 
+<c:if test="${totalCount > 0 }">					
 				<!-- 페이징 처리 -->
 				<nav aria-label="Page navigation ">
 					<ul class="pagination justify-content-center mb-5">${pagingHTML}</ul>
 				</nav>
-				
+</c:if>				
 				<p class="btn-style"> 
 					<a class="btn btn-outline-secondary f-13" href="#">글쓰기</a>
 				</p>

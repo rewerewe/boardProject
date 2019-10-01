@@ -5,6 +5,23 @@
   
 <mapper namespace="com.board.BoardDao">
 	
+	<select id="view" resultType="map">
+		SELECT /* com.board.BoardDao.view */
+				SEQ
+				, TITLE
+				, CONTENT
+				, DATE_FORMAT(CREATED, '%y-%m-%d %H:%i') AS CREATED
+				, WRITER
+				, HIT
+		  FROM 
+				BOARD
+		 WHERE 
+				1=1
+		   AND 
+				SEQ=#{seq}
+		
+	</select>
+	
 	<select id="totalCount" resultType="int">
 		SELECT /* com.board.BoardDao.totalCount */
 			COUNT(*) AS TOTCOUNT

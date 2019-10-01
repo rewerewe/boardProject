@@ -2,6 +2,8 @@ package com.board.project;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Repository;
 import com.common.AbstractDao;
 
@@ -9,8 +11,15 @@ import com.common.AbstractDao;
  * Repository : Bean을 주입시켜주는 어노테이션. 
  * 어노테이션을 선언한 클래스가 Repository로 사용됨을 Spring Framework에 알리는 역할.
  */
+@SuppressWarnings("rawtypes")
 @Repository("BoardDao")
 public class BoardDao extends AbstractDao {
+	
+	public Map view(String seq) {
+		
+		Map view = sqlSession.selectOne("com.board.BoardDao.view", seq);
+		return view;
+	}
 	
 	public List<Object> pagingList(HashMap<String, Object> param) {
 		
@@ -46,5 +55,8 @@ public class BoardDao extends AbstractDao {
 		List<Object> sampleList = sqlSession.selectList("com.board.BoardDao.sample");
 		return sampleList;
 	}
+
+
+
 }
 
