@@ -13,6 +13,13 @@
 <link type="text/css" rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="<%=cp %>/css/board.css">
 </head>
+<script type="text/javascript">
+
+	function insertContent() {
+		
+		document.getElementById("insertForm").submit();
+	}
+</script>
 <body>
 	<div class="container container-style">
 		<header class="h-style pt-4 pb-4">
@@ -46,26 +53,19 @@
 			<div class="card mb-3 writeForm-style">
 				<div class="row no-gutters">
 					<div class="writeForm-body">
-						<form>
+						<form id="insertForm" action="insertContent.do">
 							<div class="form-group">
-								<select class="form-control f-13 wi-20" id="formControlSelect1">
-									<option>공지</option>
-									<option>질문</option>
-									<option>정보</option>
-								</select>
+								<input class="form-control f-13 wi-30" name="writer" id="writer" placeholder="작성자" required autofocus>
 							</div>
 							<div class="form-group">
-								<input class="form-control f-13 wi-30" id="formControlInput1" placeholder="작성자" required autofocus>
+								<input class="form-control f-13 wi-100" name="title" id="title" placeholder="제목을 입력해주세요." required>
 							</div>
 							<div class="form-group">
-								<input class="form-control f-13 wi-100" id="formControlInput2" placeholder="제목을 입력해주세요." required>
-							</div>
-							<div class="form-group">
-								<textarea class="form-control f-13 wi-100" id="formControlTextarea1" rows="10" placeholder="내용을 입력해주세요."></textarea>
+								<textarea class="form-control f-13 wi-100" name="content" id="content" rows="10" placeholder="내용을 입력해주세요."></textarea>
 							</div>
 							<p class="btn-align-center"> 
-								<a class="btn f-13" href="#">취소</a>
-								<a class="btn btn-outline-secondary f-13" href="#">등록</a>
+								<a class="btn f-13" href="list.do">취소</a>
+								<a class="btn btn-outline-secondary f-13" href="#" onclick="insertContent()">등록</a>
 							</p>
 						</form>
 					</div>

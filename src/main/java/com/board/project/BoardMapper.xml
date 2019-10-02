@@ -4,7 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.board.BoardDao">
-	
+	<insert id="insertContent">
+		INSERT INTO /* com.board.BoardDao.insertContent */
+				BOARD (TITLE, CONTENT, WRITER)
+		VALUES 
+				(#{title} ,#{content} ,#{writer})
+	</insert>
 	<select id="view" resultType="map">
 		SELECT /* com.board.BoardDao.view */
 				SEQ
@@ -35,11 +40,9 @@
 		SELECT	/* com.board.BoardDao.pagingList */
 			   * 
 		  FROM 
-			   (
-				SELECT ROW_NUMBER() OVER(ORDER BY SEQ DESC) AS RNUM, A.*
+			   (SELECT ROW_NUMBER() OVER(ORDER BY SEQ DESC) AS RNUM, A.*
 				  FROM 
-					   (
-						SELECT  SEQ
+					   (SELECT  SEQ
 								, TITLE
 								, CONTENT
 								, DATE_FORMAT(CREATED, '%y-%m-%d %H:%i') AS CREATED
@@ -61,7 +64,7 @@
 		INSERT INTO /* com.board.BoardDao.data */
 			BOARD (TITLE, CONTENT, WRITER)
 		VALUES 
-			(#{TITLE}, #{CONTENT}, #{WRITER});
+			(#{TITLE}, #{CONTENT}, #{WRITER})
 	</insert>
 	
 	<select id="list" resultType="map">

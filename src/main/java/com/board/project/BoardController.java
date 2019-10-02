@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
  * Controller : Bean을 주입시켜주는 어노테이션. 
  * 어노테이션을 선언한 클래스가 Controller로 사용됨을 Spring Framework에 알리는 역할.
  */
+@SuppressWarnings("rawtypes")
 @Controller
 public class BoardController {
 
@@ -25,6 +26,21 @@ public class BoardController {
 	 * RequestMapping : 클라이언트 요청을 매칭하는 어노테이션. 
 	 * 요청에 따라 어떤 Controller, Method가 처리할 것인지 결정하여 매핑하는 역할 
 	 */
+	@RequestMapping("insertContent.do")
+	public String insertContent(HttpServletRequest request) {
+		
+		service.insertContent(request);
+		
+		return "redirect:list.do";
+	}
+	
+	@RequestMapping("writeForm.do")
+	public String writeForm() {
+		
+		return "writeform";
+	}
+	
+	
 	@RequestMapping("view.do")
 	public ModelAndView view(HttpServletRequest request) {
 		
@@ -38,14 +54,14 @@ public class BoardController {
 		return mv;
 	}
 	
-	@RequestMapping("pagingList.do")
+	@RequestMapping("list.do")
 	public ModelAndView list(HttpServletRequest request) {
 		
 		ModelAndView mv = new ModelAndView();
 		
-		List<Object> paginglist = service.pagingList(request);
+		List<Object> pagingList = service.pagingList(request);
 		
-		mv.addObject("paginglist", paginglist);
+		mv.addObject("pagingList", pagingList);
 		mv.setViewName("list");
 		
 		return mv;
@@ -59,7 +75,7 @@ public class BoardController {
 		return "redirect:list.do";
 	}
 	
-	@RequestMapping("list.do")
+	@RequestMapping("listTest.do")
 	public ModelAndView list() {
 
 		ModelAndView mv = new ModelAndView();

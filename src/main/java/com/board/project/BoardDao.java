@@ -15,12 +15,10 @@ import com.common.AbstractDao;
 @Repository("BoardDao")
 public class BoardDao extends AbstractDao {
 	
-	public Map view(String seq) {
-		
-		Map view = sqlSession.selectOne("com.board.BoardDao.view", seq);
-		return view;
+	public void insertContent(HashMap<String, String> param) {
+		sqlSession.selectOne("com.board.BoardDao.insertContent", param);
 	}
-	
+
 	public List<Object> pagingList(HashMap<String, Object> param) {
 		
 		List<Object> pagingList = sqlSession.selectList("com.board.BoardDao.pagingList", param);
@@ -56,6 +54,11 @@ public class BoardDao extends AbstractDao {
 		return sampleList;
 	}
 
+	public Map view(String seq) {
+		
+		Map view = sqlSession.selectOne("com.board.BoardDao.view", seq);
+		return view;
+	}
 
 
 }

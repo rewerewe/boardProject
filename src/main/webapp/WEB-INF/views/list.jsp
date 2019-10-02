@@ -14,14 +14,6 @@
 <link type="text/css" rel="stylesheet" href="<%=cp %>/css/board.css">
 
 <script type="text/javascript">
-
-	function getPaging(nowPage) {
-		
-		var param = "";
-		param += "?nowPage=" + nowPage;
-		
-		location.href = "pagingList.do" + param;
-	}
 	
 	function getSEQ(seq) {
 		
@@ -29,6 +21,14 @@
 		param += "?seq=" + seq;
 		
 		location.href = "view.do" + param;
+	}
+	
+	function getPaging(nowPage) {
+		
+		var param = "";
+		param += "?nowPage=" + nowPage;
+		
+		location.href = "list.do" + param;
 	}
 </script>
 </head>
@@ -75,7 +75,7 @@
 						</tr>
 					</thead>
 					<tbody>
-<c:forEach var="item" items="${paginglist}" varStatus="vs">			
+<c:forEach var="item" items="${pagingList}" varStatus="vs">			
 	<c:if test="${totalCount > 0 }">					
 						<tr>
 							<th scope="row" id="SEQ${item.SEQ}">${item.SEQ}</th>
@@ -102,7 +102,7 @@
 				</nav>
 </c:if>				
 				<p class="btn-style"> 
-					<a class="btn btn-outline-secondary f-13" href="#">글쓰기</a>
+					<a class="btn btn-outline-secondary f-13" href="writeForm.do">글쓰기</a>
 				</p>
 			</div>
 	 		<div class="col-md-2"></div>
