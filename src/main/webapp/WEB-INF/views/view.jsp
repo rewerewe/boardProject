@@ -13,7 +13,7 @@
 <link type="text/css" rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="<%=cp %>/css/board.css">
 <script type="text/javascript">
-	
+
 	function updateContent(seq) {
 		
 		alert("글 수정화면으로 이동합니다.");
@@ -92,7 +92,9 @@
 			</div>
 	 		<div class="col-md-2"></div>
 	 		
-	 		<!-- Commented -->	
+	 		<!-- Commented -->
+<c:forEach var="item" items="${commList}">
+<c:if test="${item.BOARD_SEQ == view.SEQ}">	 			
 				<div class="card mb-3 comment-style">	
 					<div class="row no-gutters">	
 						<div class="card-body dp-b comments">
@@ -101,16 +103,16 @@
 									<li>
 										<div class="author-meta">
 											<img src="https://t1.daumcdn.net/tistory_admin/blog/admin/profile_default_06.png" class="avatar" alt="">
-											<span class="nickname"><a href="https://naver.com" onclick="">meiis</a></span>
-											<span class="date">2019.09.30 13:00 </span>
+											<span class="nickname"><a href="https://naver.com" onclick="">${item.COMM_WRITER }</a></span>
+											<span class="date">${item.COMM_CREATED}</span>
 										</div>
-										<p>상세페이지 잘보고 갑니다. 좋은 팁 감사합니다.</p>
+										<p>${item.COMM_CONTENT}</p>
 										<div class="control">
 											<a href="#" onclick="">수정/삭제</a>
 										</div>
 									</li>
 								</ul>
-								<!--  commentEditForm -->
+								<!--   commentEditForm
 								<form class="m-0">
 									<div class="comment-form">
 										<textarea name="comment" cols="" rows="4">상세페이지 잘보고 갑니다. 좋은 팁 감사합니다.</textarea>
@@ -118,30 +120,31 @@
 											<button type="submit" class="comment-btn">수정하기</button>
 										</div>
 									</div>
-								</form> 
+								</form>  -->
 							</div>
 						</div>	
 					</div>	
-				</div> 
+				</div>
+</c:if>
+</c:forEach> 
+<c:if test="${item.BOARD_SEQ == view.SEQ}">
+	<div>잘못된 경로입니다.</div>
+</c:if>
+				
 				<!-- CommentForm -->
 				<div class="commentform mb-3 commentform-style">
 					<div class="row no-gutters">
 						<div class="card-body dp-b comments">
 							<div class="card-title comment-list">
-								<form class="m-0">
+								<form class="m-0" id="commentFomr" action="insertComment.do">
 									<div class="comment-form">
 										<div class="field">
-											<input type="text" name="name" value="" placeholder="이름">
-											<input type="password" name="password" value="" placeholder="암호">
-											<div class="secret">
-												<input type="checkbox" name="secret" id="secret">
-												<label for="secret" tabindex="0">Secret</label>
-											</div>
+											<input type="text" name="username" placeholder="username">
+											<input type="password" name="password" placeholder="password" pattern="[a-z0-9]{6,18}" title="소문자과 숫자 조합, 6자이상 입력해주세요.">
 										</div>
-										<textarea name="comment" cols="" rows="4" placeholder="댓글을 입력해주세요."></textarea>
-										<div class="submit">
-											<button type="submit" class="comment-btn">댓글달기</button>
-										</div>
+										<textarea name="comment" rows="5" placeholder="leave a comment"></textarea>
+										<input type="hidden" name="seq" value="${view.SEQ}">
+										<button type="submit" class="comment-btn">댓글남기기</button>
 									</div>
 								</form>
 							</div>

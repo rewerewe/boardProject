@@ -4,6 +4,25 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.board.BoardDao">
+	
+	<select id="commList" resultType="map">
+		SELECT	/* com.board.BoardDao.commList */
+			COMM_SEQ
+			, COMM_CREATED
+			, COMM_WRITER
+			, COMM_CONTENT
+			, BOARD_SEQ
+		 FROM 
+			BOARD_COMMENT
+	</select>
+	
+	<insert id="insertComment">
+		INSERT INTO /* com.board.BoardDao.insertComment */
+			BOARD_COMMENT (COMM_WRITER, COMM_CONTENT, COMM_PASSWORD, BOARD_SEQ)
+		VALUES 
+			(#{comm_writer}, #{comm_content},#{comm_password}, #{board_seq})
+	</insert>
+	
 	<update id="updateContent">
 		UPDATE	/* com.board.BoardDao.updateContent */
 			BOARD
