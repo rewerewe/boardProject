@@ -23,6 +23,12 @@ public class BoardService {
 	 * Resource : 어플리케이션에서 필요한 자원을 자동 연결할 때 사용하는 어노테이션. 
 	 * 주로 getter, setter에 적용시키며, 설정파일에 등록된 bean객체의 name 속성으로 자동 주입된다. 
 	 * */
+	public void delectContent(HttpServletRequest request) {
+		String seq = request.getParameter("seq");
+		
+		dao.delectContent(seq);
+	}
+	
 	public void insertContent(HttpServletRequest request) {
 		
 		String writer = request.getParameter("writer");

@@ -12,6 +12,23 @@
 <title>view.jsp</title>
 <link type="text/css" rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="<%=cp %>/css/board.css">
+<script type="text/javascript">
+	
+	function deleteContent(seq) {
+		
+		var msg = confirm("글번호 '"+ seq +"' 를 삭제하시겠습니까?");
+		
+		if (msg == true) {
+		
+			var url = "deleteContent.do?seq=" + seq;
+			location.href= url
+		
+		} else {
+			return false;
+		}
+	}
+	
+</script>
 </head>
 <body>
 	<div class="container container-style">
@@ -51,7 +68,10 @@
 					<p class="view-date">${view.CREATED} by <a href="#">${view.WRITER}</a><u class="controlHit">${view.HIT} watched </u></p>
 
 			        <p>${view.CONTENT}</p>
-			        <p class="controlBtn"><a class="edbtn" href="#" onclick="">수정 / 삭제</a></p>
+			        <p class="controlBtn">
+				        <a class="edbtn" href="#" onclick="">수정</a>
+				        <a class="edbtn" href="#" onclick="deleteContent('${view.SEQ}')">/ 삭제</a>
+				    </p>
 			     </div>
 			</div>
 	 		<div class="col-md-2"></div>
@@ -65,8 +85,8 @@
 									<li>
 										<div class="author-meta">
 											<img src="https://t1.daumcdn.net/tistory_admin/blog/admin/profile_default_06.png" class="avatar" alt="">
-											<span class="nickname"><a href="https://naver.com" onclick="">임혜</a></span>
-											<span class="date">2019.09.11 13:00 </span>
+											<span class="nickname"><a href="https://naver.com" onclick="">meiis</a></span>
+											<span class="date">2019.09.30 13:00 </span>
 										</div>
 										<p>상세페이지 잘보고 갑니다. 좋은 팁 감사합니다.</p>
 										<div class="control">
@@ -74,24 +94,15 @@
 										</div>
 									</li>
 								</ul>
-								<!-- commentEditForm -->
+								<!--  commentEditForm -->
 								<form class="m-0">
 									<div class="comment-form">
-										<!--
-										<div class="field">
-											<div class="secret">
-												<input type="checkbox" name="secret" id="secret">
-												<label for="secret" tabindex="0">Secret</label>
-											</div> 
-										</div>  
-										-->
 										<textarea name="comment" cols="" rows="4">상세페이지 잘보고 갑니다. 좋은 팁 감사합니다.</textarea>
 										<div class="submit">
-											
 											<button type="submit" class="comment-btn">수정하기</button>
 										</div>
 									</div>
-								</form>
+								</form> 
 							</div>
 						</div>	
 					</div>	

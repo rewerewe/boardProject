@@ -15,8 +15,12 @@ import com.common.AbstractDao;
 @Repository("BoardDao")
 public class BoardDao extends AbstractDao {
 	
+	public void delectContent(String seq) {
+		sqlSession.delete("com.board.BoardDao.deleteContent", seq);
+	}
+	
 	public void insertContent(HashMap<String, String> param) {
-		sqlSession.selectOne("com.board.BoardDao.insertContent", param);
+		sqlSession.insert("com.board.BoardDao.insertContent", param);
 	}
 
 	public List<Object> pagingList(HashMap<String, Object> param) {
@@ -59,7 +63,6 @@ public class BoardDao extends AbstractDao {
 		Map view = sqlSession.selectOne("com.board.BoardDao.view", seq);
 		return view;
 	}
-
 
 }
 

@@ -4,12 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.board.BoardDao">
+	<delete id="deleteContent">
+		DELETE FROM 
+			BOARD   /* com.board.BoardDao.deleteContent */
+		WHERE
+			SEQ=#{seq}
+	</delete>
+	
 	<insert id="insertContent">
 		INSERT INTO /* com.board.BoardDao.insertContent */
 				BOARD (TITLE, CONTENT, WRITER)
 		VALUES 
 				(#{title} ,#{content} ,#{writer})
 	</insert>
+	
 	<select id="view" resultType="map">
 		SELECT /* com.board.BoardDao.view */
 				SEQ
