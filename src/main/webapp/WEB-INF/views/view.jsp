@@ -14,6 +14,22 @@
 <link type="text/css" rel="stylesheet" href="<%=cp %>/css/board.css">
 <script type="text/javascript">
 	
+	function updateContent(seq) {
+		
+		alert("글 수정화면으로 이동합니다.");
+		
+		if (seq != null) {
+			var url = "updateForm.do?seq=" + seq;
+			location.href = url
+
+		} else if (seq == null) {
+			alert("잘못된 경로입니다. 다시 시도해주세요.");
+			
+		} else {
+			return false;
+		}
+	}
+	
 	function deleteContent(seq) {
 		
 		var msg = confirm("글번호 '"+ seq +"' 를 삭제하시겠습니까?");
@@ -21,7 +37,7 @@
 		if (msg == true) {
 		
 			var url = "deleteContent.do?seq=" + seq;
-			location.href= url
+			location.href = url
 		
 		} else {
 			return false;
@@ -69,7 +85,7 @@
 
 			        <p>${view.CONTENT}</p>
 			        <p class="controlBtn">
-				        <a class="edbtn" href="#" onclick="">수정</a>
+				        <a class="edbtn" href="#" onclick="updateContent('${view.SEQ}')">수정</a>
 				        <a class="edbtn" href="#" onclick="deleteContent('${view.SEQ}')">/ 삭제</a>
 				    </p>
 			     </div>

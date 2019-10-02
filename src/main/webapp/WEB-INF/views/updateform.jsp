@@ -12,6 +12,23 @@
 <title>updateform.jsp</title>
 <link type="text/css" rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="<%=cp %>/css/board.css">
+<script type="text/javascript">
+
+	function updateContent() {
+		
+		var msg = confirm("글을 수정하시겠습니까?");
+		
+		if (msg == true) {
+			
+			document.getElementById("updateForm").submit();
+						
+		} else {
+			return false;
+			
+		}
+	}
+	
+</script>
 </head>
 <body>
 	<div class="container container-style">
@@ -43,32 +60,28 @@
 		    </nav>
 		</div>
 		<div role="main" class="main-style">
-
 			<div class="card mb-3 writeForm-style">
 				<div class="row no-gutters">
 					<div class="writeForm-body">
-						<form>
+						<form id="updateForm" action="updateContent.do">
 							<div class="form-group">
-								<select class="form-control f-13 wi-20" id="formControlSelect1">
-									<option>공지</option>
-									<option>질문</option>
-									<option>정보</option>
-								</select>
+								<input type="hidden" name="seq" id="seq" value="${view.SEQ}">
 							</div>
 							<div class="form-group">
-								<input class="form-control f-13 wi-30" id="formControlInput1" placeholder="작성자" readonly="readonly">
+								<input class="form-control f-13 wi-30" name="writer" id="writer" required autofocus value="${view.WRITER }">
 							</div>
 							<div class="form-group">
-								<input class="form-control f-13 wi-100" id="formControlInput2" placeholder="제목을 입력해주세요." required autofocus>
+								<input class="form-control f-13 wi-100" name="title" id="title" required value="${view.TITLE }">
 							</div>
 							<div class="form-group">
-								<textarea class="form-control f-13 wi-100" id="formControlTextarea1" rows="10" placeholder="내용을 입력해주세요."></textarea>
+								<textarea class="form-control f-13 wi-100" name="content" id="content" rows="10" value="${view.CONTENT }">${view.CONTENT }</textarea>
 							</div>
 							<p class="btn-align-center"> 
-								<a class="btn f-13 " href="#">취소</a>
-								<a class="btn btn-outline-secondary f-13" href="#">수정</a>
+								<a class="btn f-13" href="#" onclick="window.history.back();">취소</a>
+								<a class="btn btn-outline-secondary f-13" href="#" onclick="updateContent();">수정</a>
 							</p>
 						</form>
+						<div>${view}</div>
 					</div>
 				</div>	
 			</div>
