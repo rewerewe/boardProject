@@ -1,18 +1,21 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-	String cp = request.getContextPath();
-%>
+<c:set var="cp" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>view.jsp</title>
-<link type="text/css" rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
-<link type="text/css" rel="stylesheet" href="<%=cp %>/css/board.css">
+<link type="text/css" rel="stylesheet" href="${cp}/css/bootstrap.css">
+<link type="text/css" rel="stylesheet" href="${cp}/css/board.css">
+<script type="text/javascript" src="${cp}/resources/js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
+	$(init);
+
+	function init() {
+		// TODO		
+	}
 
 	function updateContent(seq) {
 		
@@ -44,6 +47,22 @@
 		}
 	}
 	
+	function updateCommForm(commIdx) {
+		// 전체 초기화
+		var commAreaAll = $('[id^=commArea]');
+		commAreaAll.find('[id^=commContentSpan]').removeClass('hidden');
+		commAreaAll.find('[id^=commContentTextarea]').addClass('hidden');
+		commAreaAll.find('[id^=commSaveBtn]').addClass('hidden');
+		
+		// 대상 로우만 숨김/보임 처리
+		var commArea = $('[id^=commArea' + commIdx + ']');
+		var commContentSpan = $('#commContentSpan' + commIdx);
+		var commContentTextarea = $('#commContentTextarea' + commIdx);
+		var commSaveBtn = $('#commSaveBtn' + commIdx);
+		commContentSpan.addClass('hidden');
+		commContentTextarea.removeClass('hidden');
+		commSaveBtn.removeClass('hidden');
+	}
 </script>
 </head>
 <body>
@@ -93,43 +112,59 @@
 	 		<div class="col-md-2"></div>
 	 		
 	 		<!-- Commented -->
-<c:forEach var="item" items="${commList}">
-<c:if test="${item.BOARD_SEQ == view.SEQ}">	 			
-				<div class="card mb-3 comment-style">	
-					<div class="row no-gutters">	
-						<div class="card-body dp-b comments">
-							<div class="card-title comment-list">
-								<ul>
-									<li>
-										<div class="author-meta">
-											<img src="https://t1.daumcdn.net/tistory_admin/blog/admin/profile_default_06.png" class="avatar" alt="">
-											<span class="nickname"><a href="https://naver.com" onclick="">${item.COMM_WRITER }</a></span>
-											<span class="date">${item.COMM_CREATED}</span>
-										</div>
-										<p>${item.COMM_CONTENT}</p>
-										<div class="control">
-											<a href="#" onclick="">수정/삭제</a>
-										</div>
-									</li>
-								</ul>
-								<!--   commentEditForm
-								<form class="m-0">
-									<div class="comment-form">
-										<textarea name="comment" cols="" rows="4">상세페이지 잘보고 갑니다. 좋은 팁 감사합니다.</textarea>
-										<div class="submit">
-											<button type="submit" class="comment-btn">수정하기</button>
-										</div>
+<c:forEach var="item" items="${commList}" varStatus="vs">
+	<c:if test="${item.BOARD_SEQ == view.SEQ}">		
+			<div id="commArea${vs.index}" class="card mb-3 comment-style">
+				<div class="row no-gutters">
+					<div class="card-body dp-b comments">
+						<div class="card-title comment-list">
+							<ul>
+								<li>
+									<div class="author-meta">
+										<img src="${cp}/resources/image/profile.png" class="avatar" alt="프로파일">
+										<span class="nickname"><a href="#" onclick="">${item.COMM_WRITER}</a></span>
+										<span class="date">${item.COMM_CREATED}</span>
 									</div>
-								</form>  -->
-							</div>
-						</div>	
+								<form name="commentForm" class="m-0" action="updateComm.do">
+									<p>
+										<input type="hidden" name="seq" value="${view.SEQ}" />
+										<input type="hidden" name="commSeq" value="${item.COMM_SEQ}" />
+										<input type="hidden" name="commWriter" value="${item.COMM_WRITER}" />
+										<span id="commContentSpan${vs.index}">${item.COMM_CONTENT}</span>
+										<textarea id="commContentTextarea${vs.index}" class="hidden" name="commContent" cols="100" rows="5" autofocus>${item.COMM_CONTENT}</textarea>
+										<br>
+										<button type="submit" id="commSaveBtn${vs.index}" class="comment-btn hidden">수정하기</button>
+									</p>
+								</form>
+									<div class="control">
+										<a href="#" onclick="updateCommForm('${vs.index}')">댓글수정</a>
+										<a href="#" onclick="deleteCommForm('${item.COMM_SEQ}')">/ 댓글삭제</a>
+									</div>
+									<%-- <div>
+										${commList}
+									</div> --%>
+									
+								</li>
+							</ul>
+							<div id="commUpdateForm"></div>
+							<!--   commentEditForm
+							<form class="m-0">
+								<div class="comment-form">
+									<textarea name="comment" cols="" rows="4">상세페이지 잘보고 갑니다. 좋은 팁 감사합니다.</textarea>
+									<div class="submit">
+										<button type="submit" class="comment-btn">수정하기</button>
+									</div>
+								</div>
+							</form>  -->
+						</div>
 					</div>	
-				</div>
-</c:if>
+				</div>	
+			</div>
+	</c:if>
 </c:forEach> 
-<c:if test="${item.BOARD_SEQ == view.SEQ}">
+<%-- <c:if test="${item.BOARD_SEQ != view.SEQ}">
 	<div>잘못된 경로입니다.</div>
-</c:if>
+</c:if> --%>
 				
 				<!-- CommentForm -->
 				<div class="commentform mb-3 commentform-style">

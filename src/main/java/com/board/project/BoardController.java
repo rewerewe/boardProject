@@ -26,6 +26,21 @@ public class BoardController {
 	 * RequestMapping : 클라이언트 요청을 매칭하는 어노테이션. 
 	 * 요청에 따라 어떤 Controller, Method가 처리할 것인지 결정하여 매핑하는 역할 
 	 */
+	@RequestMapping("updateComm.do")
+	public String updateComm(HttpServletRequest request) {
+		String seq = request.getParameter("seq");
+		
+		service.updateComm(request);
+		
+		return "redirect:view.do?seq=" + seq;
+	}
+	
+	@RequestMapping("updateCommForm.do")
+	public String updateCommForm(HttpServletRequest request) {
+		
+		return "redirect:view.do";
+	}
+	
 	@RequestMapping("commList.do")
 	public ModelAndView commList(HttpServletRequest request) {
 		
@@ -42,7 +57,9 @@ public class BoardController {
 	public String insertComment(HttpServletRequest request) {
 		
 		service.insertComment(request);
-		return "view.do";
+		String seq = request.getParameter("seq");
+		String url = "redirect:view.do?seq="+seq;
+		return url;
 	}
 	
 	@RequestMapping("updateContent.do")

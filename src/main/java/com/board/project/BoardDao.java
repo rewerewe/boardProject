@@ -15,6 +15,9 @@ import com.common.AbstractDao;
 @Repository("BoardDao")
 public class BoardDao extends AbstractDao {
 	
+	public void updateComment(HashMap<String, String> param) {
+		sqlSession.update("com.board.BoardDao.updateComment", param);
+	}
 
 	public List<Object> commList(String board_seq) {
 

@@ -5,6 +5,16 @@
   
 <mapper namespace="com.board.BoardDao">
 	
+	<update id="updateComment">
+		UPDATE /* com.board.BoardDao.updateComment */
+			BOARD_COMMENT
+		SET
+			COMM_WRITER = #{comm_writer} 
+			, COMM_CONTENT = #{comm_content}	
+		WHERE
+			COMM_SEQ = #{comm_seq}
+	</update>
+	
 	<select id="commList" resultType="map">
 		SELECT	/* com.board.BoardDao.commList */
 			COMM_SEQ

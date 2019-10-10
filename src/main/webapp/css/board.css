@@ -471,3 +471,11 @@ button {
     font-size: 0.875em;
     line-height: 50px;
 }
+
+.hidden {
+	display: none;
+}
+
+.show {
+	display: inline;
+}
