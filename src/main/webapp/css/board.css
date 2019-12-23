@@ -169,7 +169,7 @@ a:hover {
 }
 
 
-/* View page CSS */
+/* View CSS */
 .view-style {
     margin-bottom: 4rem;
     width: 80% !important;
@@ -196,6 +196,10 @@ a:hover {
 
 .btn-outline-secondary:hover {
 	background-color: #e9ecef !important;
+}
+
+.text-under {
+	text-decoration: underline;
 }
 
 /* writeForm */

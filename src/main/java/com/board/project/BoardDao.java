@@ -15,6 +15,10 @@ import com.common.AbstractDao;
 @Repository("BoardDao")
 public class BoardDao extends AbstractDao {
 	
+	public void deleteComment(String comm_seq) {
+		sqlSession.delete("com.board.BoardDao.deleteComment", comm_seq);
+	}
+	
 	public void updateComment(HashMap<String, String> param) {
 		sqlSession.update("com.board.BoardDao.updateComment", param);
 	}

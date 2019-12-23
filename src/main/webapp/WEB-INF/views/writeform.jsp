@@ -31,8 +31,8 @@
 					<a class="board-header-logo text-dark" href="#">Board</a>
 				</div>
 				<div class="col-4 d-flex justify-content-end align-items-center">
-					<a class="btn btn-sm" href="#">Sign in</a>
-					<a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+					<a class="btn btn-sm" href="signin.do">Sign in</a>
+					<a class="btn btn-sm btn-outline-secondary" href="signup.do">Sign up</a>
 				</div>
 			</div>
 		</header>

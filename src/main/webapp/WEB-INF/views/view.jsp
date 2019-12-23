@@ -63,6 +63,19 @@
 		commContentTextarea.removeClass('hidden');
 		commSaveBtn.removeClass('hidden');
 	}
+	
+	function deleteComm(seq, commSeq, commWriter) {
+	
+		var msg = confirm(commWriter + "님이 작성한 댓글을 삭제하시겠습니까?");
+		
+		if (msg == true) {
+			var url = "deleteComm.do?seq=" + seq;
+			url += "&commSeq=" + commSeq;
+			location.href = url;
+		} else {
+			return false;
+		}
+	}
 </script>
 </head>
 <body>
@@ -76,8 +89,8 @@
 					<a class="board-header-logo text-dark" href="#">Board</a>
 				</div>
 				<div class="col-4 d-flex justify-content-end align-items-center">
-					<a class="btn btn-sm" href="#">Sign in</a>
-					<a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+					<a class="btn btn-sm" href="signin.do">Sign in</a>
+					<a class="btn btn-sm btn-outline-secondary" href="signup.do">Sign up</a>
 				</div>
 			</div>
 		</header>
@@ -98,10 +111,9 @@
 			<div class="col-md-2"></div>
 			<div class="col-md-auto">
 				<div class="view-style">
-					<h6 class="view-group"><u>${view.SEQ}</u></h6>
-					<h3 class="view-title">${view.TITLE}</h3>
-					<p class="view-date">${view.CREATED} by <a href="#">${view.WRITER}</a><u class="controlHit">${view.HIT} watched </u></p>
-
+					<h6 class="view-group text-under">${view.SEQ}</h6>
+					<h3 class="view-title">${view.TITLE}</h3> 
+					<p class="view-date">${view.CREATED} by <a href="#">${view.WRITER}</a></p> <p class="controlHit text-under">${view.HIT} watched </p>
 			        <p>${view.CONTENT}</p>
 			        <p class="controlBtn">
 				        <a class="edbtn" href="#" onclick="updateContent('${view.SEQ}')">수정</a>
@@ -138,24 +150,13 @@
 								</form>
 									<div class="control">
 										<a href="#" onclick="updateCommForm('${vs.index}')">댓글수정</a>
-										<a href="#" onclick="deleteCommForm('${item.COMM_SEQ}')">/ 댓글삭제</a>
+										<a href="#" onclick="deleteComm('${view.SEQ}','${item.COMM_SEQ}','${item.COMM_WRITER}')">/ 댓글삭제</a>
 									</div>
 									<%-- <div>
 										${commList}
 									</div> --%>
-									
 								</li>
 							</ul>
-							<div id="commUpdateForm"></div>
-							<!--   commentEditForm
-							<form class="m-0">
-								<div class="comment-form">
-									<textarea name="comment" cols="" rows="4">상세페이지 잘보고 갑니다. 좋은 팁 감사합니다.</textarea>
-									<div class="submit">
-										<button type="submit" class="comment-btn">수정하기</button>
-									</div>
-								</div>
-							</form>  -->
 						</div>
 					</div>	
 				</div>	

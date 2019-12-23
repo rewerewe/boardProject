@@ -26,26 +26,44 @@ public class BoardController {
 	 * RequestMapping : 클라이언트 요청을 매칭하는 어노테이션. 
 	 * 요청에 따라 어떤 Controller, Method가 처리할 것인지 결정하여 매핑하는 역할 
 	 */
-	@RequestMapping("updateComm.do")
-	public String updateComm(HttpServletRequest request) {
-		String seq = request.getParameter("seq");
-		
-		service.updateComm(request);
-		
-		return "redirect:view.do?seq=" + seq;
+	@RequestMapping("signup.do")
+	public ModelAndView singup() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("signup");
+		return mv;
 	}
 	
-	@RequestMapping("updateCommForm.do")
-	public String updateCommForm(HttpServletRequest request) {
+	@RequestMapping("signin.do")
+	public ModelAndView singin() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("signin");
+		return mv;
+	}
+	
+	@RequestMapping("deleteComm.do")
+	public String deleteComment(HttpServletRequest request) {
 		
-		return "redirect:view.do";
+		service.deleteComment(request);
+		String seq = request.getParameter("seq");
+		String url = "redirect:view.do?seq=" + seq;
+		
+		return url;
+	}
+	
+	@RequestMapping("updateComm.do")
+	public String updateComm(HttpServletRequest request) {
+		
+		service.updateComment(request);
+		String seq = request.getParameter("seq");
+		String url = "redirect:view.do?seq=" + seq;
+		
+		return url;
 	}
 	
 	@RequestMapping("commList.do")
 	public ModelAndView commList(HttpServletRequest request) {
 		
 		ModelAndView mv = new ModelAndView();
-		
 		List<Object> commList = service.commList(request);
 		mv.addObject("commList", commList);
 		mv.setViewName("view");
@@ -59,6 +77,7 @@ public class BoardController {
 		service.insertComment(request);
 		String seq = request.getParameter("seq");
 		String url = "redirect:view.do?seq="+seq;
+		
 		return url;
 	}
 	
@@ -74,9 +93,7 @@ public class BoardController {
 	public ModelAndView updateForm(HttpServletRequest request) {
 		
 		ModelAndView mv = new ModelAndView();
-		
 		Map view = service.view(request);
-		
 		mv.addObject("view", view);
 		mv.setViewName("updateform");
 		
@@ -110,10 +127,8 @@ public class BoardController {
 	public ModelAndView view(HttpServletRequest request) {
 		
 		ModelAndView mv = new ModelAndView();
-		
 		Map view = service.view(request);
 		List<Object> commList = service.commList(request);
-		
 		mv.addObject("view", view);
 		mv.addObject("commList", commList);
 		mv.setViewName("view");
@@ -125,9 +140,7 @@ public class BoardController {
 	public ModelAndView list(HttpServletRequest request) {
 		
 		ModelAndView mv = new ModelAndView();
-		
 		List<Object> pagingList = service.pagingList(request);
-		
 		mv.addObject("pagingList", pagingList);
 		mv.setViewName("list");
 		
@@ -147,7 +160,6 @@ public class BoardController {
 
 		ModelAndView mv = new ModelAndView();
 		List<Object> list = service.list();
-
 		mv.addObject("list", list);
 		mv.setViewName("list");
 
@@ -158,9 +170,7 @@ public class BoardController {
 	public ModelAndView sampleList() {
 		
 		ModelAndView mv = new ModelAndView();
-		
 		List<Object> sampleList = service.sample();
-		
 		mv.addObject("sampleList", sampleList);
 		mv.setViewName("home");
 		

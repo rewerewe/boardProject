@@ -14,19 +14,19 @@
 <title>signup.jsp</title>
 <link type="text/css" rel="stylesheet" href="<%=cp %>/css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="<%=cp %>/css/signup.css">
+
 </head>
 <body class="text-center">
 	<div class="section-signup signup-style">
 		<h3 class="signup-title-style">회원가입</h3>
-			<form id="form" name="singupForm" method="post" action="" onsubmit="">
-
+			<form id="form" name="singupForm" method="post" action="" onsubmit="return checkValue()">
 				<div class="signupWrite">
 					<table class="table">
 						<tbody>
 							<tr>
 								<td class="cols1">아이디*</td>
 								<td class="cols2">
-									<input type="text" class="form-control f-13" name="signup_id" id="signup_id" value="" maxlength="16" required fld_esssential label="아이디" autofocus placeholder="6자 이상 입력해주세요"> 
+									<input type="text" class="form-control f-13" name="signup_id" id="signup_id" value="" maxlength="16" required fld_esssential label="아이디" autofocus> 
 								</td>
 								<td class="cols3">
 									<input type="hidden" name="check_id" required fld_esssential label="아이디중복체크" value=""> 
@@ -59,17 +59,17 @@
 									<span class="btn-signup">이메일 중복확인</span></a>
 								</td>
 							</tr>
-							<tr>
+							<!-- <tr>
 								<td class="cols1">이름*</td>
 								<td class="cols2">
 								<input type="text" class="form-control f-13" name="member-name" id="member-name"  value="" required fld_esssential label="이름" placeholder="이름을 입력해주세요"> 
-							</tr>
+							</tr> -->
 							
 							<tr class="mobile">
-								<td class="cols1">휴대폰*</td>
+								<td class="cols1">휴대폰</td>
 								<td class="cols2">
 									<div class="phone_num">
-										<input type="text" class="form-control f-13" name="signup_mobile" id="signup_mobile"  value="" pattern="[0-9]*" required fld_esssential label="휴대번호" placeholder="숫자만 입력해주세요"> 
+										<input type="text" class="form-control f-13" name="signup_mobile" id="signup_mobile"  value="" pattern="[0-9]*" label="휴대번호" placeholder="숫자만 입력해주세요"> 
 										<input type="hidden" name="mobile" id="mobile" value="" required="" fld_esssential=" label="휴대폰">
 									</div>
 								</td>
@@ -79,7 +79,8 @@
 				</div>
 				
 				<div>
-					<button type="submit" class="btn-signup-submit">가입하기</button>
+					<button type="submit" class="btn-signup-submit mb-3">가입하기</button>
+					<a class="btn-sm" href="signin.do">Sign in</a>
 				</div>
 		</form>
 	</div>
